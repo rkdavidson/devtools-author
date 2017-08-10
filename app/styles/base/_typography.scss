@@ -1,17 +1,19 @@
 /* ==========================================================================
    Base Typography
    ========================================================================== */
-   
+
 :host-context(.platform-mac),
 body.platform-mac,
 body.platform-mac ::shadow {
-  
+
   .monospace,
   .source-code {
     font-size: 12px !important;
-    line-height: 1.6em !important;
+    line-height: 1.7em !important;
     font-family: $mac-fonts !important;
-    
+    letter-spacing: -1px;
+    -webkit-font-smoothing: auto;
+
     // Apply antialiased setting for dark themes only
     // http://usabilitypost.com/2012/11/05/stop-fixing-font-smoothing/
     @if $dark-theme == true {
@@ -23,7 +25,7 @@ body.platform-mac ::shadow {
 :host-context(.platform-windows),
 body.platform-windows,
 body.platform-windows ::shadow {
-  
+
   .monospace,
   .source-code {
     font-family: $win-fonts !important;
@@ -35,7 +37,7 @@ body.platform-windows ::shadow {
 :host-context(.platform-linux),
 body.platform-linux,
 body.platform-linux ::shadow {
-  
+
   .monospace,
   .source-code {
     font-family: $lin-fonts !important;

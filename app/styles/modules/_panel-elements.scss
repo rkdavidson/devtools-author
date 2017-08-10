@@ -6,5 +6,11 @@
   .elements-disclosure li.parent::before {
     height: 10px;
     margin-top: 4px;
+    -webkit-mask-size: 36px 32px;
+  }
+
+  .webkit-html-attribute-name {
+    font-style: italic;
+    letter-spacing: -1px;
   }
 }

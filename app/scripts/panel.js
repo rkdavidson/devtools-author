@@ -8,7 +8,7 @@
   storage   // Chrome Storage API
 ){
   'use strict';
-  
+
   /**
    * Panel module
    * @namespace panel
@@ -39,7 +39,7 @@
 
     /** @private */
     var $alert = $('.alert')[0];
-    
+
     /** @private */
     var _panel = _panel || {};
 
@@ -57,10 +57,10 @@
 
     /** @private */
     var _currentTheme = null;
-   
+
     /** @private */
     var _currentFontSize = null;
-    
+
     /** @private */
     var _currentFontFamily = null;
 
@@ -70,7 +70,7 @@
      * @param {Array} palette - List of theme colors in hex
      */
     function _createLI(palette){
-        
+
       /** Filter palette to remove duplicate colors */
       palette = palette.filter(function(item, pos, self) {
         return self.indexOf(item) === pos;
@@ -87,7 +87,7 @@
         /** Add item to the list */
         $palette.appendChild(item);
       }
-    
+
     }
 
     /**
@@ -97,13 +97,13 @@
      * @returns {Array} List of theme colors in hex
      */
     function _themeLookUp(theme){
-      
+
       for (var i = 0; i < _panel.themes.length; i++){
         if (_panel.themes[i].name === theme) {
           return _panel.themes[i].colors;
         }
       }
-    
+
     }
 
     /**
@@ -131,7 +131,7 @@
      * @returns {HTMLElement} menu - Theme select menu element, with available themes appended
      */
     function _buildSelectMenu(menu, model){
-      
+
       var options, array;
 
       /** Get the data attribute value */
@@ -140,9 +140,9 @@
       /** Clean string and create array */
       options = options.replace(/in\s/g, '').split(' ');
 
-      /** 
+      /**
        * Assign array from model by property name
-       * using the value from the last item in options 
+       * using the value from the last item in options
        */
       array = model[options[options.length - 1]];
 
@@ -163,7 +163,7 @@
       }
 
       return menu;
-    
+
     }
 
     /**
@@ -230,10 +230,10 @@
      * @function _panelSetup
      */
     function _panelSetup(){
-      
+
       /** Observe changes to _panel model */
       _panelModelSetup();
-      
+
       /** Listen for changes to the select menu */
       $select.addEventListener('change', setTheme);
 
@@ -252,7 +252,7 @@
       storage.get('devtools-theme', function(object){
         _panel.currentTheme = _currentTheme = getTheme( _panel.themes, object['devtools-theme'] );
         _buildSelectMenu($select, _panel);
-        
+
         /** Send Google Analytics 'Install' event on initial install */
         if (!object['devtools-theme'] && _panel.currentTheme === _defaultTheme){
           ga('send', 'event', 'Install', 'Install', 'Devtools Author', 1);
@@ -268,7 +268,7 @@
       storage.get('devtools-fontSize', function(object){
         _panel.currentFontSize = _currentFontSize = getFontSize(object['devtools-fontSize']);
       });
-    
+
     }
 
     /**
@@ -279,14 +279,14 @@
      * @param {Object} obj - Object for theme settings defaults
      */
     function setTheme(event, obj){
-      
+
       function save(theme){
         storage.set({ 'devtools-theme': theme.value }, function(){
           _panel.currentTheme = theme.text;
         });
         return theme.value;
       }
-      
+
       if (event && event.type === 'change'){
         var el     = event.target || event.srcElement;
         var option = el.options[el.selectedIndex];
@@ -294,7 +294,7 @@
       } else if (event === null && obj){
         return save(obj);
       }
-    
+
     }
 
     /**
@@ -305,21 +305,21 @@
      * @param {Object} value - Value for `font-family` settings
      */
     function setFontFamily(event, value){
-      
+
       function save(fontFamily){
         storage.set({ 'devtools-fontFamily': fontFamily }, function(){
           _panel.currentFontFamily = fontFamily;
         });
         return fontFamily;
       }
-      
+
       if (event && event.type === 'change'){
         var el = event.target || event.srcElement;
         return save(el.value);
       } else if (event === null && value){
         return save(value);
       }
-    
+
     }
 
     /**
@@ -330,21 +330,21 @@
      * @param {Object} value - Value for `font-size` settings
      */
     function setFontSize(event, value){
-      
+
       function save(fontSize){
         storage.set({ 'devtools-fontSize': fontSize }, function(){
           _panel.currentFontSize = fontSize;
         });
         return fontSize;
       }
-      
+
       if (event && event.type === 'change'){
         var el = event.target || event.srcElement;
         return save(el.value);
       } else if (event === null && value){
         return save(value);
       }
-    
+
     }
 
     /**
@@ -356,7 +356,7 @@
      * @returns {String} Theme name
      */
     function getTheme(array, string){
-      
+
       if (!array || !string){
         setTheme(null, {
           value: _defaultTheme.replace(/\s+/g, '-').toLowerCase(),
@@ -364,13 +364,13 @@
         });
         return _defaultTheme;
       }
-      
+
       for (var i = 0; i < array.length; i++){
         if (array[i].name.replace(/\s+/g, '-').toLowerCase() === string){
           return array[i].name;
         }
       }
-    
+
     }
 
     /**
@@ -381,14 +381,14 @@
      * @returns {String} value - Value for `font-family` settings
      */
     function getFontFamily(value){
-      
+
       if (!value){
         setFontFamily(null, _defaultFontFamily);
         return _defaultFontFamily;
       } else {
         return value;
       }
-    
+
     }
 
     /**
@@ -399,14 +399,14 @@
      * @returns {String} value - Value for `font-size` settings
      */
     function getFontSize(value){
-      
+
       if (!value){
         setFontSize(null, _defaultFontSize);
         return _defaultFontSize;
       } else {
         return value;
       }
-    
+
     }
 
     /**
@@ -417,10 +417,10 @@
     function init(){
 
       var ajax = new XMLHttpRequest();
-      
+
       ajax.open('GET', _themeJSON);
       ajax.send(null);
-      
+
       ajax.onreadystatechange = function(){
         if (ajax.readyState === 4) {
           if (ajax.status === 200) {
@@ -438,7 +438,7 @@
           }
         }
       };
-    
+
     }
 
     /** Public methods */
@@ -452,7 +452,7 @@
       setFontFamily: setFontFamily
     };
   })();
-  
+
   /** Initialize panel */
   panel.init();
 

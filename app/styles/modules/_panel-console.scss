@@ -13,10 +13,20 @@
   }
 
   #console-prompt::before {
-    content: "\203A";
-    font-size: 1.5em;
-    top: 6px;
-    left: -20px;
+    // content: "\203A";
+    // font-size: 1.5em;
+    // top: 6px;
+    // left: -20px;
+  }
+
+  .message-level-icon,
+  .console-prompt-icon {
+    top: 8px;
+  }
+
+  .expand-group-icon {
+    position: absolute;
+    top: 9px;
   }
 
   .console-message > .outline-disclosure li.parent::before {
@@ -27,9 +37,9 @@
   .console-error-level ::shadow .stack-preview-container {
     color: #FF0033 !important;
   }
-  
+
   @if $dark-theme == true {
-    #console-messages .link, 
+    #console-messages .link,
     #console-messages a {
       color: #AAAAAA !important;
     }
@@ -47,8 +57,8 @@
       th {
         padding: 4px;
       }
-      
-      td, 
+
+      td,
       th {
         line-height: inherit !important;
       }
@@ -56,21 +66,21 @@
       table.data {
         background-image: none !important;
       }
-      
+
       @if $dark-theme == true {
         border: 1px solid rgba(255, 255, 255, 0.25);
-        
+
         th {
           color: #AAAAAA;
           background-color: rgba(255,255,255,0.15);
           border-bottom: 1px solid rgba(255,255,255,0.25);
         }
-      
-        td, 
+
+        td,
         th {
           border-left: 1px solid rgba(255,255,255,0.25);
         }
-      
+
       }
     }
   }

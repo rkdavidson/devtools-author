@@ -17,13 +17,15 @@ $base05: #7d8793;
 $base06: #abb2ba;
 $base07: #c3cbd4; // brighest grey
 $red: #df6b75; // red
-$orange: #d19965; // orange
-$yellow: #e2c08d; // yellow
-$green: #97c279; // green
+$orange: #fec35f; // orange
+$yellow: #f0c674; // yellow
+$green: #9EDB80; // green
 $aqua: #56b5c2; // aqua
-$blue: #61afef; // blue
-$purple: #c578dd; // purple
+$blue: #80d0fF; // blue
+$purple: #c174db; // purple
 $brown: #d19365; // brown
+
+$green-dark: #384F15;
 
 // Styles
 @include styles(
@@ -32,7 +34,7 @@ $base01, // Background - Highlight
 $base04, // Comments / Secondary Content
 $base07, // Body text / default code / primary content / HTML attr name / CSS rule value
 $base07, // Optional emphasized content
-$base07, // CSS Properties
+$red, // CSS Properties
 $red, // CSS3 pseudo-selectors / elements
 $purple, // CSS Keywords (!important, etc.)
 $red, // HTML Tags / CSS ID/Class Selectors / JS Keywords / Current item highlight
@@ -55,15 +57,66 @@ $yellow  // Accent / Highlight
 		.elements-disclosure ol:focus li.selected .selection {
 			background-color: $base03 !important;
 		}
+
+		.elements-disclosure li {
+			margin-top: 3px !important;
+		}
+
+		li.selected:not(.always-parent) + ol.children {
+			border-color: $base04 !important;
+		}
 	}
 
 	.style-properties .webkit-css-property,
 	::shadow .tree-outline .webkit-css-property {
-		color: $base07 !important;
+		color: darken($red, 10%) !important;
 	}
 
 	.style-properties .value,
 	::shadow .tree-outline .value {
-		color: $green !important;
+		color: $green-dark !important;
+	}
+
+	.styles-section {
+		padding: 10px 8px;
+	}
+
+	.styles-section-subtitle {
+		height: auto;
+		font-size: 11px;
+	}
+
+	.styles-section .selector,
+	.styles-section .simple-selector,
+	.styles-section.keyframe-key {
+		// font-weight: bold;
+		color: darken($blue, 35%) !important;
+	}
+
+	:host-context(.platform-mac) .monospace,
+	:host-context(.platform-mac) .source-code,
+	body.platform-mac .monospace, body.platform-mac .source-code,
+	body.platform-mac ::shadow .monospace,
+	body.platform-mac ::shadow .source-code {
+		color: $base05;
+	}
+
+	// .style-panes-wrapper {
+	// 	background: $base01;
+	// 	color: $base07;
+	// }
+
+	.console-message-wrapper.console-warning-level {
+		background: rgba($yellow, 0.5);
+		border-color: $orange;
+	}
+
+	.console-message-wrapper.console-error-level {
+		background: rgba($red, 0.7);
+		border-color: darken($red, 10%);
+	}
+
+	#console-messages .devtools-link {
+		color: $base04;
 	}
 }

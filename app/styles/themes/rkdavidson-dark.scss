@@ -1,0 +1,70 @@
+/* ==============================================
+   Coda Theme
+   ============================================== */
+
+ $dark-theme: true;
+ 
+// Import Styles
+@import "base/theme-config";
+
+// These colors are specific to the theme. Do not use in a package!
+
+$very-light-gray: #d3d5d1;
+$light-gray: #969896;
+$gray: #373b41;
+$dark-gray: #282a2e;
+$very-dark-gray: #1d1f21;
+$cold-black: #131818;
+
+$cyan: #3acec7;
+$blue: #80d0fF;
+$deep-blue: #4f86ff;
+$purple: #c174db;
+$light-purple: #e2a4fb;
+$eggplant: #c769fa;
+$react-purple: #78afff;
+$green: #9EDB80;
+$green-stone: #b9ce72;
+$green-dark: #384F15;
+$green-darker: #182F05;
+$red: #F77;
+$orange: #fec35f;
+$light-orange: #f0c674;
+
+// ----------
+
+$rkd-comment: #888A8F;
+$rkd-string: #9FEB60;
+$rkd-json-string: #9EDB80;
+$rkd-number: #FEAEFF;
+$rkd-variable: $red;
+$rkd-keyword: $purple;
+$rkd-class-type: #FF6363;
+$rkd-function-name: darken($blue, 8%);
+$rkd-function-arg: $orange;
+$rkd-tag: $react-purple;
+$rkd-tag-attr: $light-orange;
+$rkd-const: $eggplant;
+$rkd-line-highlight: #343D4C;
+$rkd-caret: #7DCD89;
+$rkd-selection: #384F15;
+
+// Styles
+@include styles(
+$dark-gray, // Background
+lighten(#282a2e, 10%), // Background - Highlight
+$rkd-comment, // Comments / Secondary Content
+$very-light-gray, // Body text / default code / primary content
+$very-light-gray, // Optional emphasized content
+$rkd-tag-attr, // CSS Properties
+$rkd-tag-attr, // CSS3 pseudo-selectors / elements
+$rkd-keyword, // CSS Keywords (!important, etc.)
+$rkd-tag, // HTML Tags / CSS ID/Class Selectors / JS Keywords
+$rkd-string, // HTML/CSS/JS Strings
+#916319, // CSS Tag Selectors / JS Operators (in Canary)
+#AA2063  // Accent / Highlight
+);
+
+.devtools-link {
+  color: $deep-blue !important;
+}

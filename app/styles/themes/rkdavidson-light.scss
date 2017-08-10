@@ -1,0 +1,149 @@
+/* ==============================================
+Coda Theme
+============================================== */
+
+$dark-theme: false;
+
+// Import Styles
+@import "base/theme-config";
+
+// Palette
+$base00: #1D1F21;
+$base01: #282A2E;
+$base02: #59606b;
+$base03: #969896;
+$base04: #B4B7B4;
+$base05: #dadada;
+$base06: #F0F0F0;
+$base07: #FFFFFF;
+$base08: #d74941;
+$base09: #F96A38;
+$base0A: #ffbe53;
+$base0B: #149d49;
+$base0C: #3971ED;
+$base0D: #6951cc;
+$base0E: #aa59de;
+$base0F: #c215a1;
+
+// Styles
+@include styles(
+$base07, // Background
+$base06, // Background - Highlight
+$base04, // Comments / Secondary Content
+$base02, // Body text / default code / primary content
+$base00, // Optional emphasized content
+$base09, // CSS Properties
+$base0D, // CSS3 pseudo-selectors / elements
+$base0F, // CSS Keywords (!important, etc.)
+$base0C, // HTML Tags / CSS ID/Class Selectors / JS Keywords
+$base0B, // HTML/CSS/JS Strings
+$base08, // CSS Tag Selectors / JS Operators (in Canary)
+$base0B  // Accent / Highlight
+);
+
+
+.elements {
+  ::shadow {
+    .webkit-html-attribute-name {
+      color: $base0A !important;
+    }
+
+    .webkit-html-attribute-value {
+      color: $base0B !important;
+    }
+
+    .elements-disclosure li.selected .selection,
+    .elements-disclosure ol:focus li.selected .selection {
+      // background-color: $base03 !important;
+    }
+
+    .elements-disclosure li {
+      margin-top: 3px !important;
+    }
+
+    li.selected:not(.always-parent) + ol.children {
+      // border-color: $base04 !important;
+    }
+  }
+
+  .style-properties .webkit-css-property,
+  ::shadow .tree-outline .webkit-css-property {
+    // color: darken($red, 10%) !important;
+  }
+
+  .style-properties .value,
+  ::shadow .tree-outline .value {
+    color: $base02 !important;
+  }
+
+  .styles-section {
+    border-color: $base05;
+    padding: 10px 8px;
+  }
+
+  .styles-section-subtitle {
+    height: auto;
+    font-size: 11px;
+  }
+
+  .styles-section .selector,
+  .styles-section .simple-selector,
+  .styles-section.keyframe-key {
+    // font-weight: bold;
+    color: $base0C !important;
+  }
+
+  :host-context(.platform-mac) .monospace,
+  :host-context(.platform-mac) .source-code,
+  body.platform-mac .monospace, body.platform-mac .source-code,
+  body.platform-mac ::shadow .monospace,
+  body.platform-mac ::shadow .source-code {
+    color: $base04;
+  }
+
+  // .style-panes-wrapper {
+  // 	background: $base01;
+  // 	color: $base07;
+  // }
+}
+
+.styles-element-state-pane {
+  height: 82px !important;
+}
+
+.console,
+.console-view {
+  .console-message-wrapper .console-warning-level {
+    background: rgba($base0E, 0.7);
+    border-color: rgba($base09, 0.3);
+  }
+
+  .console-message-wrapper .console-error-level {
+    background: rgba($base08, 0.3);
+    border-color: darken($base08, 10%);
+  }
+
+  .console-message-wrapper .nesting-level-marker {
+    margin-bottom: 0;
+    border-right: $base03;
+    background: $base06;
+  }
+
+  .console-info-level .console-message-anchor {
+    // background: rgba($base06, 0.5);
+    // padding: 0 6px;
+    font-size: 12px;
+    // border-radius: 16px;
+
+    .devtools-link {
+      color: $base04 !important;
+      // width: 100%;
+      // text-align: center;
+      // display: inline-block;
+    }
+  }
+
+  .console-message-expand-icon {
+    margin-right: 6px;
+  }
+}
